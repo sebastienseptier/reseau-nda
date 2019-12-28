@@ -1,0 +1,30 @@
+{
+  "name": "reseau-nda",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "devStart": "nodemon server.js",
+    "devStartAuth": "nodemon authServer.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sebastienseptier/reseau-nda.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sebastienseptier/reseau-nda/issues"
+  },
+  "homepage": "https://github.com/sebastienseptier/reseau-nda#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}
