@@ -20,11 +20,12 @@
   },
   "homepage": "https://github.com/sebastienseptier/reseau-nda#readme",
   "dependencies": {
-    "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "jsonwebtoken": "^8.5.1"
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.8.3"
   },
   "devDependencies": {
+    "dotenv": "^8.2.0",
     "nodemon": "^2.0.2"
   }
 }

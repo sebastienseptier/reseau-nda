@@ -1,5 +1,30 @@
-GET http://localhost:3000/posts
+GET http://localhost:3000/users
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiSmltIiwiaWF0IjoxNTc3NTU1OTA1LCJleHAiOjE1Nzc1NTU5MjB9.1xJxa8pug1f0L8Bkpfjp3sC3NdODSoPBsx5O562HJEk
+
+###
+
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+  "firstname": "Sébastien",
+  "lastname": "SEPTIER",
+  "email": "seb@test.fr",
+  "password": "test"
+}
+
+###
+
+DELETE http://localhost:3000/users/5e07cdb24816982bd0afcdd6
+
+###
+
+PATCH http://localhost:3000/users/5e07cdb24816982bd0afcdd6
+Content-Type: application/json
+
+{
+  "lastname": "SEPTIER"
+}
 
 ###
 
