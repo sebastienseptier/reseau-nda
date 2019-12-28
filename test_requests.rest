@@ -1,5 +1,5 @@
 GET http://localhost:3000/users
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiSmltIiwiaWF0IjoxNTc3NTU1OTA1LCJleHAiOjE1Nzc1NTU5MjB9.1xJxa8pug1f0L8Bkpfjp3sC3NdODSoPBsx5O562HJEk
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNlYkB0ZXN0LmZyIiwidXNlcklkIjoiNWUwN2U1NDc3MmIzMjUzNGEwYTllODY4IiwiaWF0IjoxNTc3NTc3MTUzLCJleHAiOjE1Nzc1NzcxNzN9.y5tKL73ntayxhB-Dm2AtKuGkdYVAKdWQ6KNxH_oUnxk
 
 ###
 
@@ -15,7 +15,7 @@ Content-Type: application/json
 
 ###
 
-DELETE http://localhost:3000/users/5e07cdb24816982bd0afcdd6
+DELETE http://localhost:3000/users/5e07e4b072b32534a0a9e864
 
 ###
 
@@ -46,9 +46,27 @@ Content-Type: application/json
 
 ###
 
+GET http://localhost:3000/posts
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNlYkB0ZXN0LmZyIiwidXNlcklkIjoiNWUwN2U1NDc3MmIzMjUzNGEwYTllODY4IiwiaWF0IjoxNTc3NTc2MTQ5LCJleHAiOjE1Nzc1NzYxNjl9.YT9JKlN-1yhpqR-o419ctoQN-00ygxpfe2EU4qd5OOg
+
+###
+
 POST http://localhost:4000/login
 Content-Type: application/json
 
 {
-  "username": "Jim"
+  "email": "seb@test.fr",
+  "password": "test"
+}
+
+###
+
+POST http://localhost:4000/signup
+Content-Type: application/json
+
+{
+  "firstname": "Sébastien",
+  "lastname": "SEPTIER",
+  "email": "seb@test.fr",
+  "password": "test"
 }

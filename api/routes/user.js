@@ -1,9 +1,11 @@
 const express = require('express')
 const router = express.Router()
 const User = require('../models/user')
+//Function to be used in order to protect specific routes
+const checkAuth = require('../check-auth')
 
 // Getting all
-router.get('/', async (req, res) => {
+router.get('/', checkAuth, async (req, res) => {
   try {
     const users = await User.find()
     res.json(users)
