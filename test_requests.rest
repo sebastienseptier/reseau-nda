@@ -1,5 +1,5 @@
 GET http://localhost:3000/users
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNlYkB0ZXN0LmZyIiwidXNlcklkIjoiNWUwN2U1NDc3MmIzMjUzNGEwYTllODY4IiwiaWF0IjoxNTc3NTc3MTUzLCJleHAiOjE1Nzc1NzcxNzN9.y5tKL73ntayxhB-Dm2AtKuGkdYVAKdWQ6KNxH_oUnxk
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNlYkB0ZXN0LmZyIiwidXNlcklkIjoiNWUwN2U1NDc3MmIzMjUzNGEwYTllODY4IiwiaWF0IjoxNTc3NjM4MDEyLCJleHAiOjE1Nzc2MzgwMzJ9.sfLL3T9VCJ4bqT-qerIqBzyuYyXHYpvAPs9oOa74vVw
 
 ###
 
@@ -25,29 +25,6 @@ Content-Type: application/json
 {
   "lastname": "SEPTIER"
 }
-
-###
-
-DELETE http://localhost:4000/logout
-Content-Type: application/json
-
-{
-  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiSmltIiwiaWF0IjoxNTY4NzU5OTIyfQ.RT6wszuCeFLwC_6ksmNMIELxiC5s-uRivfRxyZof5ag"
-}
-
-###
-
-POST http://localhost:4000/token
-Content-Type: application/json
-
-{
-  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiSmltIiwiaWF0IjoxNTY4NzU5OTIyfQ.RT6wszuCeFLwC_6ksmNMIELxiC5s-uRivfRxyZof5ag"
-}
-
-###
-
-GET http://localhost:3000/posts
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNlYkB0ZXN0LmZyIiwidXNlcklkIjoiNWUwN2U1NDc3MmIzMjUzNGEwYTllODY4IiwiaWF0IjoxNTc3NTc2MTQ5LCJleHAiOjE1Nzc1NzYxNjl9.YT9JKlN-1yhpqR-o419ctoQN-00ygxpfe2EU4qd5OOg
 
 ###
 

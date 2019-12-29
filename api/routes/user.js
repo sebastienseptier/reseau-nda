@@ -15,12 +15,12 @@ router.get('/', checkAuth, async (req, res) => {
 })
 
 // Getting One
-router.get('/:id', getUser, (req, res) => {
+router.get('/:id', checkAuth, getUser, (req, res) => {
   res.json(res.user)
 })
 
 // Creating one
-router.post('/', async (req, res) => {
+router.post('/', checkAuth, async (req, res) => {
   const user = new User({
     firstname: req.body.firstname,
     lastname: req.body.lastname,
@@ -36,7 +36,7 @@ router.post('/', async (req, res) => {
 })
 
 // Updating One
-router.patch('/:id', getUser, async (req, res) => {
+router.patch('/:id', checkAuth, getUser, async (req, res) => {
   if (req.body.firstname != null) {
     res.user.firstname = req.body.firstname
   }
@@ -55,7 +55,7 @@ router.patch('/:id', getUser, async (req, res) => {
 })
 
 // Deleting One
-router.delete('/:id', getUser, async (req, res) => {
+router.delete('/:id', checkAuth, getUser, async (req, res) => {
   try {
     await res.user.remove()
     res.json({ message: 'Deleted user' })
