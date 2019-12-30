@@ -1,0 +1,71 @@
+<section>
+	<div class="container">
+		<!--Head-->
+		<div class="media">
+			<img class="profil-pic" src="{{ user.profilPicture }}" alt="">
+			<div class="media-body ml-3">
+				<h1 class="mb-0">{{ user.name }}</h1>
+				<span class="lead badge" [ngClass]="{'badge-warning': user.grade.id==2, 'badge-danger': user.grade.id==3, 'badge-success': user.grade.id==1}" title="{{ user.grade.gradeDescription }}">{{ user.grade.gradeName }}</span>
+				<p class="lead">{{ user.location.town }}, {{ user.location.province }}, {{ user.location.country }}</p>
+			</div>
+		</div>
+		<hr>
+		<!--Body-->
+		<p>{{ user.description }}.</p>
+		<div class="row">
+			<!--colonne droite-->
+			<div class="col-md-4 order-md-2 mb-4">
+				<aside class="sidebar sidebar-sticky">
+					<h4 class="d-flex justify-content-between align-items-center mb-3">
+						<span class="">Groupes</span>
+						<span class="badge badge-secondary badge-pill">3</span>
+					</h4>
+					<a routerLink="/pageIntrouvee" class="list-group-item list-group-item-action">
+						<h6 class="my-0">Promotion-2013</h6>
+						<small class="text-muted">Les anciens de 2013!</small>
+						<span class="text-muted">12 membres</span>
+					</a>
+					<a routerLink="/pageIntrouvee" class="list-group-item list-group-item-action">
+						<h6 class="my-0">Les fans de sport</h6>
+						<small class="text-muted">1, 2, 3... partez!</small>
+						<span class="text-muted">58 membres</span>
+					</a>
+					<a routerLink="/pageIntrouvee" class="list-group-item list-group-item-action">
+						<h6 class="my-0">La physique chimie</h6>
+						<small class="text-muted">Plus qu'une matière, un art de vivre</small>
+						<span class="text-muted">26 membres</span>
+					</a>   
+				</aside>
+			</div>
+			<!--colonne gauche-->
+			<div class="col-md-8 order-md-1">
+				<ul class="nav nav-tabs" id="myTab" role="tablist">
+					<li class="nav-item">
+						<a class="nav-link active" id="infos-tab" data-toggle="tab" href="#infos" role="tab" aria-controls="infos" aria-selected="true">Infos générales</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" id="activity-tab" data-toggle="tab" href="#activity" role="tab" aria-controls="activity" aria-selected="false">Activité récente</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" id="parameters-tab" data-toggle="tab" href="#parameters" role="tab" aria-controls="parameters" aria-selected="false">Paramètres</a>
+					</li>
+				</ul>
+				<div class="tab-content" id="myTabContent">
+					<span>&nbsp;</span>
+					<div class="tab-pane fade show active" id="infos" role="tabpanel" aria-labelledby="infos-tab">
+						<!--First item content-->
+						<app-form-inscription [user]="user"></app-form-inscription>
+					</div>
+					<div class="tab-pane fade" id="activity" role="tabpanel" aria-labelledby="activity-tab">
+						<!--Second item content-->
+						<app-list-post></app-list-post>
+					</div>
+					<div class="tab-pane fade" id="parameters" role="tabpanel" aria-labelledby="parameters-tab">
+						<!--Third item content-->
+						<app-form-parameters></app-form-parameters>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

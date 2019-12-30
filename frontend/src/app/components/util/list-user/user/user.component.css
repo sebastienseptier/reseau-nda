@@ -1,0 +1,10 @@
+.profil-pic {
+    width: 100px;
+}
+
+/* Adaptation du texte aux petits écrans */
+@media screen and (max-width: 500px) {
+    h1 {
+        font-size:28px;
+    }
+}

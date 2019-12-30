@@ -1,0 +1,20 @@
+.profil-pic {
+    width: 25px;
+    height: 25px;
+}
+.btn-light, .btn-secondary {
+    color: #404040;
+    background-color: #fff;
+    border-color: #dbdbdb;
+}
+.dropdown-menu.show {
+    left: -94px;
+}
+.dropdown-item:focus, .dropdown-item:hover {
+    background-color: #d8d8d8;
+    cursor: pointer;
+}
+.table thead th {
+    vertical-align: super;
+    border-bottom: 2px solid #dee2e6;
+}

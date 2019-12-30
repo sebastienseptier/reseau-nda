@@ -1,6 +1,6 @@
 //Import des librairies et de la config
 const express = require('express')
-const jwt = require('jsonwebtoken')
+var path = require('path'); // NodeJS Package for file paths
 const mongoose = require('mongoose')
 require('dotenv').config()
 
@@ -17,7 +17,11 @@ db.once('open', () => console.log('Connected to Database'))
 
 //Import des routes
 const userRouter = require('./api/routes/user')
-app.use('/users', userRouter)
+app.use('/api/users', userRouter)
+
+//Connect server to Angular project
+app.use(express.static(path.join(__dirname, '/frontend/dist/')));
+app.use('*', express.static(path.join(__dirname, '/frontend/dist/')));
 
 app.listen(PORT, () => {
   console.log('Server started on port ' + PORT + ' in ' + process.env.NODE_ENV + ' mode');
