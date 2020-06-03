@@ -7,13 +7,13 @@ const User = require('./api/models/user')
 require('dotenv').config()
 
 const PORT = process.env.PORT || 4000;
-const TOKEN_DURATION = '20s';
+const TOKEN_DURATION = '40s';
 
 const app = express()
 app.use(express.json())
 
 //Connexion à la base de données
-mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true, useUnifiedTopology: true, user: "sseptier", pass: "azerty", dbName: "reseau_nda" })
 const db = mongoose.connection
 db.on('error', (error) => console.error(error))
 db.once('open', () => console.log('Connected to Database'))

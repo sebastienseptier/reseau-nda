@@ -1,5 +1,5 @@
-GET http://localhost:3000/users
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNlYkB0ZXN0LmZyIiwidXNlcklkIjoiNWUwN2U1NDc3MmIzMjUzNGEwYTllODY4IiwiaWF0IjoxNTc3NjM4MDEyLCJleHAiOjE1Nzc2MzgwMzJ9.sfLL3T9VCJ4bqT-qerIqBzyuYyXHYpvAPs9oOa74vVw
+GET http://localhost:3000/api/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNlYkB0ZXN0LmZyIiwidXNlcklkIjoiNWVjZmYzNmZiMTVhNmJjM2UxMGIwYmQ2IiwiaWF0IjoxNTkxMTg5MTc2LCJleHAiOjE1OTExODkyMTZ9.RY5Lej6GhyeQdYUrUxJED71cR3L0JjJBSnMgVgFdZQY
 
 ###
 
@@ -15,7 +15,8 @@ Content-Type: application/json
 
 ###
 
-DELETE http://localhost:3000/users/5e07e4b072b32534a0a9e864
+DELETE http://localhost:3000/api/users/5ecfe9b483e175f0a91c1d7a
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNlYkB0ZXN0LmZyIiwidXNlcklkIjoiNWVjZmYzNmZiMTVhNmJjM2UxMGIwYmQ2IiwiaWF0IjoxNTkxMTg5MjcxLCJleHAiOjE1OTExODkzMTF9.p_Krr8f6I6Lm_3T_fu-KJ4AGZ0jSGlTMcdO6T5PkrbM
 
 ###
 
@@ -42,8 +43,9 @@ POST http://localhost:4000/signup
 Content-Type: application/json
 
 {
-  "firstname": "Sébastien",
-  "lastname": "SEPTIER",
-  "email": "seb@test.fr",
-  "password": "test"
+  "firstname": "test",
+  "lastname": "test",
+  "email": "test@test.fr",
+  "password": "test",
+  "birthDate": ""
 }
