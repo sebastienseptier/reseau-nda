@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormGroup, FormControl, Validators, NgForm} from '@angular/forms';
-import {AuthService} from "../../../services/auth.service";
-import {Router} from "@angular/router";
+import { AuthService } from "../../../services/auth.service";
+import { AlertService } from "../../../services/alert.service";
+import { Router } from "@angular/router";
 
 @Component({
 	selector: 'app-form-authentification',
@@ -14,7 +15,12 @@ export class FormAuthentificationComponent implements OnInit {
 	email: FormControl;
 	password: FormControl;
 
-	constructor(private _auth: AuthService, private _router: Router) { }
+	alertOptions = {
+		autoClose: true,
+		keepAfterRouteChange: true
+	};
+
+	constructor(private _auth: AuthService, protected alertService: AlertService, private _router: Router) { }
 
 	ngOnInit() {
 		this.createFormControls();
@@ -46,6 +52,7 @@ export class FormAuthentificationComponent implements OnInit {
 			res => {
 				console.log(res);
 				localStorage.setItem('token', res.token);
+				this.alertService.success('Success!!', this.alertOptions);
 				this._router.navigate(['/posts']);
 			},
 			err => {

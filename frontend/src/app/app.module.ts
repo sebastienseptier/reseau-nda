@@ -39,6 +39,8 @@ import { FormParametersComponent } from './components/util/form-parameters/form-
 import { ThermsPrivacyComponent } from './components/metier/therms-privacy/therms-privacy.component';
 import { ContactsComponent } from './components/metier/contacts/contacts.component';
 import { AuthGuard } from "./guards/auth.guard";
+import { AlertComponent } from './components/metier/alert/alert.component';
+import { AlertService } from "./services/alert.service";
 
 @NgModule({
   	declarations: [
@@ -69,7 +71,8 @@ import { AuthGuard } from "./guards/auth.guard";
     	ManageCommentComponent,
     	FormParametersComponent,
     	ThermsPrivacyComponent,
-    	ContactsComponent
+    	ContactsComponent,
+    	AlertComponent
   	],
 	imports: [
 		BrowserModule,
@@ -78,7 +81,7 @@ import { AuthGuard } from "./guards/auth.guard";
         ReactiveFormsModule,
 		HttpClientModule
 	  ],
-	providers: [CommentService, PostService, PaginationService, UserService, AuthService, AuthGuard],
+	providers: [CommentService, PostService, PaginationService, UserService, AuthService, AuthGuard, AlertService],
 	bootstrap: [AppComponent]
 })
 export class AppModule {}
