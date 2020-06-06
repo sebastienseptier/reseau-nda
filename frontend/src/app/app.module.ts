@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
+import { HttpClientModule } from "@angular/common/http";
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/metier/header/header.component';
@@ -29,6 +30,7 @@ import { CommentService } from './services/comment.service';
 import { PostService } from './services/post.service';
 import { PaginationService } from './services/pagination.service';
 import { UserService } from './services/user.service';
+import { AuthService } from "./services/auth.service";
 import { TableComponent } from './components/util/table/table.component';
 import { ManageUserComponent } from './components/metier/administration/manage-user/manage-user.component';
 import { ManagePostComponent } from './components/metier/administration/manage-post/manage-post.component';
@@ -36,6 +38,7 @@ import { ManageCommentComponent } from './components/metier/administration/manag
 import { FormParametersComponent } from './components/util/form-parameters/form-parameters.component';
 import { ThermsPrivacyComponent } from './components/metier/therms-privacy/therms-privacy.component';
 import { ContactsComponent } from './components/metier/contacts/contacts.component';
+import { AuthGuard } from "./guards/auth.guard";
 
 @NgModule({
   	declarations: [
@@ -72,9 +75,10 @@ import { ContactsComponent } from './components/metier/contacts/contacts.compone
 		BrowserModule,
 		AppRoutingModule,
 		FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+		HttpClientModule
 	  ],
-  		providers: [CommentService, PostService, PaginationService, UserService],
-  		bootstrap: [AppComponent]
+	providers: [CommentService, PostService, PaginationService, UserService, AuthService, AuthGuard],
+	bootstrap: [AppComponent]
 })
 export class AppModule {}

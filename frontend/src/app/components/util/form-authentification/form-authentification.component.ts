@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import {FormGroup, FormControl, Validators, NgForm} from '@angular/forms';
+import {AuthService} from "../../../services/auth.service";
+import {Router} from "@angular/router";
 
 @Component({
 	selector: 'app-form-authentification',
@@ -12,7 +14,7 @@ export class FormAuthentificationComponent implements OnInit {
 	email: FormControl;
 	password: FormControl;
 
-	constructor() { }
+	constructor(private _auth: AuthService, private _router: Router) { }
 
 	ngOnInit() {
 		this.createFormControls();
@@ -37,4 +39,19 @@ export class FormAuthentificationComponent implements OnInit {
 			password: this.password
 		});
 	}
+
+	onFormSubmit(form:NgForm){
+		console.log(form);
+		this._auth.login(form).subscribe(
+			res => {
+				console.log(res);
+				localStorage.setItem('token', res.token);
+				this._router.navigate(['/posts']);
+			},
+			err => {
+				console.log(err);
+			},
+		);
+	}
+
 }

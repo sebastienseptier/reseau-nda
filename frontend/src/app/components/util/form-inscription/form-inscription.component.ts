@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormControl, FormGroup, Validators, NgForm } from '@angular/forms';
 import { User } from '../../../models/user';
+import {AuthService} from "../../../services/auth.service";
+import {Router} from "@angular/router";
 
 @Component({
 	selector: 'app-form-inscription',
@@ -65,18 +67,17 @@ export class FormInscriptionComponent implements OnInit {
 	password: FormControl;
 	checkTherms: FormControl;
 
+	constructor(private _auth: AuthService, private _router: Router) { }
+
 	ngOnInit() {
 		//On définit un nouvel utilisateur s'il le component est utilisé depuis la page d'inscription.
 		if (this.user == undefined) {
 			this.user = { 
-				id: 1, location: { id: 1, town: '', province: '', country: ''}, 
-				group: { id: 1, groupName: '', groupDescription: '', nbMembers: 0}, 
-				grade: { id: 1, gradeName: '', gradeDescription: ''}, 
-				email: '', password: '', gender: '', 
-				name: {firstName: '',lastName: '',birthName: ''}, 
-				registrationDate: '', lastConnection: '', isConnected: false, 
-				profilPicture: '', description: '', changePassword: false, 
-				lockout: false, attempts: 0, birthDate: '', promotion: ''
+				id: '1',
+				email: '', password: '',
+				firstName: '',lastName: '',
+				registrationDate: '',
+				birthDate: '', promotion: 0
 			}
 		}
 		else {
@@ -87,12 +88,8 @@ export class FormInscriptionComponent implements OnInit {
 	}
 	
 	createFormControls() {
-		this.gender = new FormControl(this.user.gender, Validators.required);
-		this.firstName = new FormControl(this.user.name.firstName, Validators.required);
-		this.lastName = new FormControl(this.user.name.lastName, Validators.required);
-		this.birthName = new FormControl(this.user.name.birthName, Validators.required);
-		this.province = new FormControl(this.user.location.province, Validators.required);
-		this.town = new FormControl(this.user.location.town, Validators.required);
+		this.firstName = new FormControl(this.user.firstName, Validators.required);
+		this.lastName = new FormControl(this.user.lastName, Validators.required);
 		this.birthDate = new FormControl(this.user.birthDate, Validators.required);
 		this.promotion = new FormControl(this.user.promotion, Validators.required);
 		this.email = new FormControl(this.user.email, [
@@ -109,14 +106,8 @@ export class FormInscriptionComponent implements OnInit {
 	
 	createForm() {
 		this.myform = new FormGroup({
-			gender: this.gender,
-			name: new FormGroup({
-				firstName: this.firstName,
-				lastName: this.lastName,
-				birthName: this.birthName
-			}),
-			province: this.province,
-			town: this.town,
+			firstName: this.firstName,
+			lastName: this.lastName,
 			birthDate: this.birthDate,
 			promotion: this.promotion,
 			email: this.email,
@@ -124,9 +115,19 @@ export class FormInscriptionComponent implements OnInit {
 			checkTherms: this.checkTherms
 		});
 	}
+
 	onFormSubmit(form:NgForm){
 		//console.trace();
 		console.log(form); 
-		
+		this._auth.register(form).subscribe(
+			res => {
+				console.log(res);
+				localStorage.setItem('token', res.token);
+				this._router.navigate(['/posts']);
+			},
+			err => {
+				console.log(err);
+			},
+		);
 	}
 }

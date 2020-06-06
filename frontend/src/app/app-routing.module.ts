@@ -12,11 +12,12 @@ import { NotFoundComponent } from './components/metier/not-found/not-found.compo
 import { HomeComponent } from './components/metier/home/home.component';
 import { ThermsPrivacyComponent } from './components/metier/therms-privacy/therms-privacy.component';
 import { ContactsComponent } from './components/metier/contacts/contacts.component';
+import {AuthGuard} from "./guards/auth.guard";
 
 const appRoutes: Routes = [
 	{ path: 'authentification', component: PortalComponent},
 	{ path: 'inscription', component: PortalComponent},
-	{ path: 'posts', component: PostsComponent},
+	{ path: 'posts', component: PostsComponent, canActivate: [AuthGuard]},
 	{ path: 'posts/:id', component: PostComponent},
 	{ path: 'nouveau-post', component: FormPostComponent},
 	{ path: 'membres', component: UsersComponent},

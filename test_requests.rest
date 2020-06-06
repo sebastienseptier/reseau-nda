@@ -33,7 +33,7 @@ POST http://localhost:4000/login
 Content-Type: application/json
 
 {
-  "email": "seb@test.fr",
+  "email": "seby@test.fr",
   "password": "test"
 }
 
@@ -43,9 +43,9 @@ POST http://localhost:4000/signup
 Content-Type: application/json
 
 {
-  "firstname": "test",
-  "lastname": "test",
-  "email": "test@test.fr",
-  "password": "test",
+  "firstName": "az",
+  "lastName": "az",
+  "email": "az@az.fr",
+  "password": "Azerty12",
   "birthDate": ""
 }

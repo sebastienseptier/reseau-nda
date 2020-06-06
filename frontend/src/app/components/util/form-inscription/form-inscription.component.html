@@ -1,74 +1,22 @@
 <form novalidate [formGroup]="myform" (ngSubmit)="onFormSubmit(myform.value)" class="col-md-6">
-	<div class="form-group" id='gender-form'>
-		<div class="custom-control custom-radio">
-			<input id="other-input" name="gender" class="custom-control-input" type="radio" formControlName="gender" value="other" required>
-			<label class="custom-control-label" for="other-input">Autre</label>
-		</div>
-		<div class="custom-control custom-radio">
-			<input id="female-input" name="gender" class="custom-control-input" type="radio" formControlName="gender" value="female"
-			 required>
-			<label class="custom-control-label" for="female-input">Femme</label>
-		</div>
-		<div class="custom-control custom-radio">
-			<input id="male-input" name="gender" class="custom-control-input" type="radio" formControlName="gender" value="male" required>
-			<label class="custom-control-label" for="male-input">Homme</label>
+	<div class="form-group">
+		<label>Prénom</label>
+		<input id="inputFirstName" [ngClass]="{
+		'is-invalid': firstName.invalid && (firstName.dirty || firstName.touched),
+		'is-valid': firstName.valid && (firstName.dirty || firstName.touched)}" placeholder="Prénom" type="text" class="form-control"
+		 formControlName="firstName" required>
+		<div class="form-control-feedback invalid-feedback" *ngIf="firstName.errors && (firstName.dirty || firstName.touched)">
+			<p *ngIf="firstName.errors.required">Le champs prénom est requis</p>
 		</div>
 	</div>
-	<fieldset formGroupName="name">
-		<div class="form-group">
-			<label>Prénom</label>
-			<input id="inputFirstName" [ngClass]="{
-			'is-invalid': firstName.invalid && (firstName.dirty || firstName.touched),
-			'is-valid': firstName.valid && (firstName.dirty || firstName.touched)}" placeholder="Prénom" type="text" class="form-control"
-			 formControlName="firstName" required>
-			<div class="form-control-feedback invalid-feedback" *ngIf="firstName.errors && (firstName.dirty || firstName.touched)">
-				<p *ngIf="firstName.errors.required">Le champs prénom est requis</p>
-			</div>
-		</div>
-		<div class="form-group">
-			<label>Nom de famille</label>
-			<input id="inputLastName" [ngClass]="{
-			'is-invalid': lastName.invalid && (lastName.dirty || lastName.touched),
-			'is-valid': lastName.valid && (lastName.dirty || lastName.touched)}" placeholder="Nom de famille" type="text" class="form-control"
-			 formControlName="lastName" required>
-			<div class="form-control-feedback invalid-feedback" *ngIf="lastName.errors && (lastName.dirty || lastName.touched)">
-				<p *ngIf="lastName.errors.required">Le champs nom de famille est requis</p>
-			</div>
-		</div>
-		<div class="form-group">
-			<label>Nom de naissance</label>
-			<input id="inputBirthName" [ngClass]="{
-			'is-invalid': birthName.invalid && (birthName.dirty || birthName.touched),
-			'is-valid': birthName.valid && (birthName.dirty || birthName.touched)}" placeholder="Nom de naissance" type="text" class="form-control"
-			 formControlName="birthName" required>
-			<div class="form-control-feedback invalid-feedback" *ngIf="birthName.errors && (birthName.dirty || birthName.touched)">
-				<p *ngIf="birthName.errors.required">Le champs nom de naissance est requis</p>
-			</div>
-		</div>
-	</fieldset>
-	<div class="form-group" id='departement_form'>
-		<label for="inputState">Département</label>
-		<!--TODO:Remplir le bouton des villes en fonction de la région sélectionnée-->
-		<select #select formControlName="province" id="inputState" class="form-control" [ngClass]="{
-			'is-invalid': province.invalid && (province.dirty || province.touched),
-			'is-valid': province.valid && (province.dirty || province.touched)}">
-			<option value="">Selectionner un département</option>
-			<option *ngFor="let province of provinces" [value]="province.name">{{province.name}}</option>
-		</select>
-		<div class="form-control-feedback invalid-feedback" *ngIf="province.errors && (province.dirty || province.touched)">
-			<p *ngIf="province.errors.required">Le champs département est requis</p>
-		</div>
-	</div>
-	<div class="form-group" id='town_form'>
-		<label for="inputCity">Ville</label>
-		<select #select formControlName="town" id="inputCity" class="form-control" [ngClass]="{
-			'is-invalid': town.invalid && (town.dirty || town.touched),
-			'is-valid': town.valid && (town.dirty || town.touched)}">
-			<option value="">Selectionner une ville</option>
-			<option *ngFor="let town of towns" [value]="town.name">{{town.name}}</option>
-		</select>
-		<div class="form-control-feedback invalid-feedback" *ngIf="town.errors && (town.dirty || town.touched)">
-			<p *ngIf="town.errors.required">Le champs ville est requis</p>
+	<div class="form-group">
+		<label>Nom de famille</label>
+		<input id="inputLastName" [ngClass]="{
+		'is-invalid': lastName.invalid && (lastName.dirty || lastName.touched),
+		'is-valid': lastName.valid && (lastName.dirty || lastName.touched)}" placeholder="Nom de famille" type="text" class="form-control"
+		 formControlName="lastName" required>
+		<div class="form-control-feedback invalid-feedback" *ngIf="lastName.errors && (lastName.dirty || lastName.touched)">
+			<p *ngIf="lastName.errors.required">Le champs nom de famille est requis</p>
 		</div>
 	</div>
 	<div class="form-group" id='birthday_form'>
