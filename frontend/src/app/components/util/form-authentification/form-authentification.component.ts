@@ -52,10 +52,11 @@ export class FormAuthentificationComponent implements OnInit {
 			res => {
 				console.log(res);
 				localStorage.setItem('token', res.token);
-				this.alertService.success('Success!!', this.alertOptions);
+				this.alertService.success('Vous vous êtes connecté(e) avec succès.', this.alertOptions);
 				this._router.navigate(['/posts']);
 			},
 			err => {
+				this.alertService.error('Adresse email ou mot de passe incorrects.', this.alertOptions);
 				console.log(err);
 			},
 		);

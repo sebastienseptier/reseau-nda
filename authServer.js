@@ -87,8 +87,9 @@ app.post('/signup', (req, res) => {
           if (err) {
             return res.status(500).json({ error: err });
           } else {
+            const user_id = new mongoose.Types.ObjectId();
             const user = new User({
-              _id: new mongoose.Types.ObjectId(),
+              _id: user_id,
               firstName: req.body.firstName,
               lastName: req.body.lastName,
               email: req.body.email,
@@ -98,7 +99,19 @@ app.post('/signup', (req, res) => {
             });
             user.save().then(result => {
                 console.log(result);
-                res.status(201).json({ message: "User created" });
+                const token = jwt.sign(
+                    {
+                        email: req.body.email,
+                        userId: user_id
+                    },
+                    process.env.ACCESS_TOKEN_SECRET,
+                    {
+                        expiresIn: TOKEN_DURATION
+                    }
+                );
+                res.status(201).json({
+                    message: "User created",
+                    token: token });
               })
               .catch(err => {
                 console.log(err);

@@ -16,6 +16,7 @@
 
 .carousel-pic {
     height: 100vh;
+    filter: blur(3px);
 }
 
 /* Adaptation du carousel aux petits écrans */

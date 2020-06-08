@@ -1,8 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormControl, FormGroup, Validators, NgForm } from '@angular/forms';
 import { User } from '../../../models/user';
-import {AuthService} from "../../../services/auth.service";
-import {Router} from "@angular/router";
+import { AuthService } from "../../../services/auth.service";
+import { Router } from "@angular/router";
+import { AlertService } from "../../../services/alert.service";
 
 @Component({
 	selector: 'app-form-inscription',
@@ -13,63 +14,28 @@ export class FormInscriptionComponent implements OnInit {
 
 	@Input() user: User;
 	validateTherms: boolean = false;
+	promotions = [];
 	//Données temporaires permettant de tester le formulaire.
-	promotions = [
-		{id: 1, name: 2000},
-		{id: 2, name: 2001},
-		{id: 3, name: 2002},
-		{id: 4, name: 2003},
-		{id: 5, name: 2004},
-		{id: 6, name: 2005},
-		{id: 7, name: 2006},
-		{id: 8, name: 2007},
-		{id: 9, name: 2008},
-		{id: 10, name: 2009},
-		{id: 11, name: 2010},
-		{id: 12, name: 2011},
-		{id: 13, name: 2012},
-		{id: 14, name: 2013},
-		{id: 15, name: 2014},
-		{id: 16, name: 2015},
-		{id: 17, name: 2016},
-		{id: 18, name: 2017},
-		{id: 19, name: 2018},
-		{id: 20, name: 2019}
-	];
-
-	towns = [
-		{ id: 1, name: 'Lille'},
-		{ id: 2, name: 'Paris'},
-		{ id: 3, name: 'Valenciennes'},
-		{ id: 4, name: 'Douais'},
-		{ id: 5, name: 'St-Omer'},
-		{ id: 6, name: 'Lomme'},
-		{ id: 7, name: 'Arras'},
-		{ id: 8, name: 'St-Amand-les-Eaux'}
-	];
-
-	provinces = [
-		{ id: 1, name: 'Nord'},
-		{ id: 2, name: 'Ile de France'},
-		{ id: 3, name: 'Pas de Calais'}
-	];
 
 	myform: FormGroup;
-	gender: FormControl;
 	firstName: FormControl;
 	lastName: FormControl;
-	birthName : FormControl;
-	province: FormControl;
-	town: FormControl;
 	birthDate: FormControl;
 	promotion: FormControl;
 	email: FormControl;
 	password: FormControl;
 	checkTherms: FormControl;
 
-	constructor(private _auth: AuthService, private _router: Router) { }
+	alertOptions = {
+		autoClose: true,
+		keepAfterRouteChange: true
+	};
+
+	constructor(private _auth: AuthService, protected alertService: AlertService, private _router: Router) { }
 
 	ngOnInit() {
+		for (let i = new Date().getFullYear(); i >= 1900; --i)
+			this.promotions.push({"id": i, "name": i});
 		//On définit un nouvel utilisateur s'il le component est utilisé depuis la page d'inscription.
 		if (this.user == undefined) {
 			this.user = { 
@@ -91,7 +57,11 @@ export class FormInscriptionComponent implements OnInit {
 		this.firstName = new FormControl(this.user.firstName, Validators.required);
 		this.lastName = new FormControl(this.user.lastName, Validators.required);
 		this.birthDate = new FormControl(this.user.birthDate, Validators.required);
-		this.promotion = new FormControl(this.user.promotion, Validators.required);
+		this.promotion = new FormControl(this.user.promotion, [
+			Validators.required,
+			Validators.pattern(/^[0-9]\d*$/),
+			Validators.min(1900)
+		]);
 		this.email = new FormControl(this.user.email, [
 			Validators.required,
 			Validators.pattern("[^ @]*@[^ @]*")
@@ -123,9 +93,11 @@ export class FormInscriptionComponent implements OnInit {
 			res => {
 				console.log(res);
 				localStorage.setItem('token', res.token);
+				this.alertService.success('Bienvenue '+this.firstName+', vous vous êtes inscrit(e) avec succès.', this.alertOptions);
 				this._router.navigate(['/posts']);
 			},
 			err => {
+				this.alertService.error('Erreur lors de l\'inscription.', this.alertOptions);
 				console.log(err);
 			},
 		);
