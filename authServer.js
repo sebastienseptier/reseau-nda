@@ -61,8 +61,13 @@ app.post("/login", (req, res) => {
                 expiresIn: TOKEN_DURATION
             }
           );
+
+          //On retire le mot de passe hashé des données envoyées au client
+          let userData = JSON.parse(JSON.stringify(user[0]));
+          delete userData.password;
           return res.status(200).json({
             message: "Auth successful",
+            user: userData,
             token: token
           });
         }
@@ -109,8 +114,13 @@ app.post('/signup', (req, res) => {
                         expiresIn: TOKEN_DURATION
                     }
                 );
+
+                //On retire le mot de passe hashé des données envoyées au client
+                let userData = JSON.parse(JSON.stringify(user[0]));
+                delete userData.password;
                 res.status(201).json({
                     message: "User created",
+                    user: userData,
                     token: token });
               })
               .catch(err => {

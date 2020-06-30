@@ -93,7 +93,8 @@ export class FormInscriptionComponent implements OnInit {
 			res => {
 				console.log(res);
 				localStorage.setItem('token', res.token);
-				this.alertService.success('Bienvenue '+this.firstName+', vous vous êtes inscrit(e) avec succès.', this.alertOptions);
+				this._auth.logUser(res.user);
+				this.alertService.success('Bienvenue '+res.user.firstName+', vous vous êtes inscrit(e) avec succès.', this.alertOptions);
 				this._router.navigate(['/posts']);
 			},
 			err => {

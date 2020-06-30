@@ -52,7 +52,8 @@ export class FormAuthentificationComponent implements OnInit {
 			res => {
 				console.log(res);
 				localStorage.setItem('token', res.token);
-				this.alertService.success('Vous vous êtes connecté(e) avec succès.', this.alertOptions);
+				this._auth.logUser(res.user);
+				this.alertService.success('Vous vous êtes connecté(e) avec succès, '+res.user.firstName+'.', this.alertOptions);
 				this._router.navigate(['/posts']);
 			},
 			err => {

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {Observable} from "rxjs";
+import {BehaviorSubject, Observable} from "rxjs";
 
 const AUTH_API = 'http://localhost:4000/';
 const httpOptions = {
@@ -15,6 +15,8 @@ export class AuthService {
   private httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
+
+  public isUserLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(this.loggedIn());
 
   constructor(private http: HttpClient) { }
 
@@ -41,9 +43,12 @@ export class AuthService {
     return !!localStorage.getItem('token');
   }
 
-  getToken() {
-    return localStorage.getItem('token');
+  logUser(user) {
+    this.isUserLoggedIn.next(true);
   }
 
-
+  logOutUser() {
+    this.isUserLoggedIn.next(false);
+    localStorage.clear();
+  }
 }
