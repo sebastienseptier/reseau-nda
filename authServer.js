@@ -7,7 +7,7 @@ const User = require('./api/models/user')
 require('dotenv').config()
 
 const PORT = process.env.PORT || 4000;
-const TOKEN_DURATION = '40s';
+const TOKEN_DURATION = '4000s';
 
 const app = express()
 app.use(express.json())

@@ -3,6 +3,11 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNlYkB0Z
 
 ###
 
+GET http://localhost:3000/api/posts
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZpbkByZXkuZnIiLCJ1c2VySWQiOiI1ZWZiM2FkNzJiMGRlYzY3ZWU4ZDg0ZmQiLCJpYXQiOjE1OTM1NTAwNTgsImV4cCI6MTU5MzU1NDA1OH0.qPDxa6V91eDR5S27xlZN8NDsg1E24Hu80ko4JRIiLHg
+
+###
+
 POST http://localhost:3000/users
 Content-Type: application/json
 
@@ -12,11 +17,29 @@ Content-Type: application/json
   "email": "seb@test.fr",
   "password": "test"
 }
+###
+
+POST http://localhost:3000/api/posts
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZpbkByZXkuZnIiLCJ1c2VySWQiOiI1ZWZiM2FkNzJiMGRlYzY3ZWU4ZDg0ZmQiLCJpYXQiOjE1OTM1NTAwNTgsImV4cCI6MTU5MzU1NDA1OH0.qPDxa6V91eDR5S27xlZN8NDsg1E24Hu80ko4JRIiLHg
+Content-Type: application/json
+
+{
+  "title": "Mon premier post",
+  "category": "LYCEE",
+  "content": "Ceci est le texte du tout premier post posté sur le réseau NDA, damn !",
+  "user_id": "5efb3ad72b0dec67ee8d84fd",
+  "image_url": "https://cdn.stocksnap.io/img-thumbs/960w/7YQZPG7HGP.jpg"
+}
 
 ###
 
 DELETE http://localhost:3000/api/users/5ecfe9b483e175f0a91c1d7a
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNlYkB0ZXN0LmZyIiwidXNlcklkIjoiNWVjZmYzNmZiMTVhNmJjM2UxMGIwYmQ2IiwiaWF0IjoxNTkxMTg5MjcxLCJleHAiOjE1OTExODkzMTF9.p_Krr8f6I6Lm_3T_fu-KJ4AGZ0jSGlTMcdO6T5PkrbM
+
+###
+
+DELETE http://localhost:3000/api/posts/5efba48f032e661779d5d964
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZpbkByZXkuZnIiLCJ1c2VySWQiOiI1ZWZiM2FkNzJiMGRlYzY3ZWU4ZDg0ZmQiLCJpYXQiOjE1OTM1NTAwNTgsImV4cCI6MTU5MzU1NDA1OH0.qPDxa6V91eDR5S27xlZN8NDsg1E24Hu80ko4JRIiLHg
 
 ###
 

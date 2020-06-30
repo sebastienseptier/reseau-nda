@@ -17,7 +17,9 @@ db.once('open', () => console.log('Connected to Database'))
 
 //Import des routes
 const userRouter = require('./api/routes/user')
+const postRouter = require('./api/routes/post')
 app.use('/api/users', userRouter)
+app.use('/api/posts', postRouter)
 
 //Connect server to Angular project
 app.use(express.static(path.join(__dirname, '/frontend/dist/')));
