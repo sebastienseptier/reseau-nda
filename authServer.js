@@ -7,7 +7,7 @@ const User = require('./api/models/user')
 require('dotenv').config()
 
 const PORT = process.env.PORT || 4000;
-const TOKEN_DURATION = '4000s';
+const TOKEN_DURATION = '40000s';
 
 const app = express()
 app.use(express.json())
@@ -103,7 +103,7 @@ app.post('/signup', (req, res) => {
               password: hash
             });
             user.save().then(result => {
-                console.log(result);
+
                 const token = jwt.sign(
                     {
                         email: req.body.email,
@@ -114,9 +114,9 @@ app.post('/signup', (req, res) => {
                         expiresIn: TOKEN_DURATION
                     }
                 );
-
+                console.log(user);
                 //On retire le mot de passe hashé des données envoyées au client
-                let userData = JSON.parse(JSON.stringify(user[0]));
+                let userData = JSON.parse(JSON.stringify(user));
                 delete userData.password;
                 res.status(201).json({
                     message: "User created",
@@ -133,10 +133,6 @@ app.post('/signup', (req, res) => {
       }
     }); 
 })
-
-function authenticate(req, res) {
-
-}
 
 app.listen(PORT, () => {
   console.log('Authentication service started on port ' + PORT + ' in ' + process.env.NODE_ENV + ' mode');

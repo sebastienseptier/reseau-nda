@@ -2,22 +2,42 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Post } from '../models/post';
 import { Router } from '@angular/router';
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import {AuthService} from "./auth.service";
 
+const AUTH_API = 'http://localhost:3000/';
+const httpOptions = {
+	headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+};
 
 @Injectable()
 export class PostService {
 
-	//Données temporaires, permet de tester l'utilisation des données.
-  	posts = [
-
-	];
+	private httpOptions = {};
+	posts = [];
 
 	tags = ['Boite à idées', 'Culture', 'Papotages & souvenirs', 'Associations & clubs', 'Evénements', 'Jobs [Offres et demandes]'];
 
-  	constructor() { }
+  	constructor(private http: HttpClient, private _auth: AuthService) {
+  		if (this._auth.isUserLoggedIn) {
+			this.httpOptions = {
+				headers: new HttpHeaders({
+					'Content-Type': 'application/json',
+					'Authorization': 'Bearer ' + this._auth.getToken()
+				})
+			};
+			console.log("safe");
+		} else {
+			this.httpOptions = {
+				headers: new HttpHeaders({'Content-Type': 'application/json'})
+			};
+			console.log("unsafe");
+		}
+	}
 
-  	getPostList():Post[] {
-    	return this.posts;
+  	getPostList():Observable<Object> {
+  		console.log("get posts !");
+		return this.http.get(AUTH_API + 'api/posts', httpOptions);
 	}
 
 	getTagList():string[] {

@@ -11,7 +11,7 @@ const postSchema = new mongoose.Schema({
   },
   category: {
     type: String,
-    enum : ['ECOLE','COLLEGE','LYCEE','ETUDES SUPERIEURES','GENERAL'],
+    enum : ['Boite à idées', 'Culture', 'Papotages & souvenirs', 'Associations & clubs', 'Evénements', 'Jobs [Offres et demandes]'],
     required: true
   },
   content: {

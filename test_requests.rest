@@ -4,7 +4,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNlYkB0Z
 ###
 
 GET http://localhost:3000/api/posts
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZpbkByZXkuZnIiLCJ1c2VySWQiOiI1ZWZiM2FkNzJiMGRlYzY3ZWU4ZDg0ZmQiLCJpYXQiOjE1OTM1NTAwNTgsImV4cCI6MTU5MzU1NDA1OH0.qPDxa6V91eDR5S27xlZN8NDsg1E24Hu80ko4JRIiLHg
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZpbkByZXkuZnIiLCJ1c2VySWQiOiI1ZWZiM2FkNzJiMGRlYzY3ZWU4ZDg0ZmQiLCJpYXQiOjE1OTM1NTE4NTEsImV4cCI6MTU5MzU1NTg1MX0.201rgtIf5U2Q6JmIqK5dQ3DhQBxVbGqG-lwBZwy0ZDE
 
 ###
 
@@ -25,7 +25,7 @@ Content-Type: application/json
 
 {
   "title": "Mon premier post",
-  "category": "LYCEE",
+  "category": "Culture",
   "content": "Ceci est le texte du tout premier post posté sur le réseau NDA, damn !",
   "user_id": "5efb3ad72b0dec67ee8d84fd",
   "image_url": "https://cdn.stocksnap.io/img-thumbs/960w/7YQZPG7HGP.jpg"
@@ -48,6 +48,16 @@ Content-Type: application/json
 
 {
   "lastname": "SEPTIER"
+}
+
+###
+
+PATCH http://localhost:3000/api/posts/5efba3e2a610660623216291
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZpbkByZXkuZnIiLCJ1c2VySWQiOiI1ZWZiM2FkNzJiMGRlYzY3ZWU4ZDg0ZmQiLCJpYXQiOjE1OTM1NTAwNTgsImV4cCI6MTU5MzU1NDA1OH0.qPDxa6V91eDR5S27xlZN8NDsg1E24Hu80ko4JRIiLHg
+Content-Type: application/json
+
+{
+  "category": "Boite à idées"
 }
 
 ###

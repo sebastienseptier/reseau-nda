@@ -14,7 +14,7 @@ export class ManagePostComponent implements OnInit {
 	constructor(private postService: PostService) { }
 
 	ngOnInit() {
-		this.posts = this.postService.getPostList();
+		//this.posts = this.postService.getPostList();
 	}
 
 }

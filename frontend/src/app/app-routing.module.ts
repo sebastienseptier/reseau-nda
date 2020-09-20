@@ -18,13 +18,13 @@ const appRoutes: Routes = [
 	{ path: 'authentification', component: PortalComponent},
 	{ path: 'inscription', component: PortalComponent},
 	{ path: 'posts', component: PostsComponent, canActivate: [AuthGuard]},
-	{ path: 'posts/:id', component: PostComponent, canActivate: [AuthGuard]},
-	{ path: 'nouveau-post', component: FormPostComponent, canActivate: [AuthGuard]},
+	/*{ path: 'posts/:id', component: PostComponent, canActivate: [AuthGuard]},
+	{ path: 'nouveau-post', component: FormPostComponent, canActivate: [AuthGuard]},*/
 	{ path: 'membres', component: UsersComponent, canActivate: [AuthGuard]},
-	{ path: 'membres/:id', component: UserComponent, canActivate: [AuthGuard]},
-	{ path: 'administration', component: AdministrationComponent, canActivate: [AuthGuard]},
+	/*{ path: 'membres/:id', component: UserComponent, canActivate: [AuthGuard]},
+	{ path: 'administration', component: AdministrationComponent, canActivate: [AuthGuard]},*/
 	{ path: 'apropos', component: AboutComponent},
-	{ path: 'contacts', component: ContactsComponent},
+	/*{ path: 'contacts', component: ContactsComponent},*/
 	{ path: 'mentions-legales', component: ThermsPrivacyComponent},
 	{ path: 'pageIntrouvee', component: NotFoundComponent},
 	{ path: '', component: HomeComponent },
